@@ -25,10 +25,6 @@ public class Student extends Model {
     public List<String> research_areas;
     public String present_career;
     public Blob image;
-    @OneToOne (mappedBy = "student")
-    public LoginUser loginUser;
-    
-    
     
     public static Student findById(Long id) {
         return find.where().eq("id", id).findUnique();
