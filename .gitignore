@@ -1,0 +1,15 @@
+logs
+project/project
+project/target
+target
+tmp
+.history
+.classpath
+.project
+.settings
+.target
+dist
+conf/evolutions/default/
+.idea*
+public/uploadFiles
+.DS_Store

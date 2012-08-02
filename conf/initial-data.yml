@@ -1,0 +1,49 @@
+# Student
+students:
+    - !!models.Student
+        family_name_en:     Ahn
+        name_en:            Hwi
+        family_name_ko:     안
+        name_ko:            휘
+        email:              ahnhwi@kaist.ac.kr
+        research_areas:     
+                            - Software engineering
+                            - Software architecture
+                            - Product Line architecture
+        present_career:     KAIST
+    - !!models.Student
+        family_name_en:     Park
+        name_en:            Taehyun
+        family_name_ko:     박
+        name_ko:            태현
+        email:              tpark@kaist.ac.kr
+        research_areas:     
+                            - Software reconstruction
+                            - Global software development
+        present_career:     KAIST      
+    - !!models.Student
+        family_name_en:     Eom
+        name_en:            Seokhwan
+        family_name_ko:     엄
+        name_ko:            석환
+        email:              esh21c@gmail.com
+        research_areas:     
+                            - Product Line Traceability
+        present_career:     Hyundai Mobis
+# LoginUser
+loginUsers:
+    - !!models.LoginUser
+         login_id:  byron1st
+         password:  
+         student:   !! models.Student
+                        id: 1
+    - !!models.LoginUser
+         login_id:  dana.park
+         password:  
+         student:   !! models.Student
+                        id: 2         
+    - !!models.LoginUser
+         login_id:  esh21c
+         password:  
+         student:   !! models.Student
+                        id: 3         
