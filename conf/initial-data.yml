@@ -6,10 +6,6 @@ students:
         family_name_ko:     안
         name_ko:            휘
         email:              ahnhwi@kaist.ac.kr
-        research_areas:     
-                            - Software engineering
-                            - Software architecture
-                            - Product Line architecture
         present_career:     KAIST
         degree:             PhD
     - !!models.Student
@@ -18,9 +14,6 @@ students:
         family_name_ko:     박
         name_ko:            태현
         email:              tpark@kaist.ac.kr
-        research_areas:     
-                            - Software reconstruction
-                            - Global software development
         present_career:     KAIST
         degree:             PhD      
     - !!models.Student
@@ -29,8 +22,6 @@ students:
         family_name_ko:     엄
         name_ko:            석환
         email:              esh21c@gmail.com
-        research_areas:     
-                            - Product Line Traceability
         present_career:     Hyundai Mobis
         degree:             Master
     - !!models.Student
@@ -39,9 +30,6 @@ students:
         family_name_ko:     김
         name_ko:            정민
         email:              jmin11@kaist.ac.kr
-        research_areas:     
-                            - Problem Frames
-                            - Design Patterns
         present_career:     KAIST
         degree:             Master
     - !!models.Student
@@ -50,9 +38,6 @@ students:
         family_name_ko:     백
         name_ko:            하은
         email:              haeun@kaist.ac.kr
-        research_areas:     
-                            - Software Testing
-                            - Product Lines
         present_career:     KAIST
         degree:             Master
     - !!models.Student
@@ -61,8 +46,5 @@ students:
         family_name_ko:     강
         name_ko:            성주
         email:              sungju@kaist.ac.kr
-        research_areas:     
-                            - Software Product Line Traceability
-                            - Service-Oriented Architecture 
         present_career:     금융결제원
         degree:             Master
