@@ -1,7 +1,6 @@
 import java.util.List;
 import java.util.Map;
 
-import models.LoginUser;
 import models.Student;
 
 import com.avaje.ebean.Ebean;
@@ -24,10 +23,6 @@ public class Global extends GlobalSettings {
                         .load("initial-data.yml");
 
                 Ebean.save(all.get("students"));
-                Ebean.save(all.get("loginUsers"));
-                LoginUser.assignPassword("byron1st", "abcd");
-                LoginUser.assignPassword("dana.park", "abc");
-                LoginUser.assignPassword("esh21c", "ab");
             }
         }
     }

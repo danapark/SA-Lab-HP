@@ -11,6 +11,7 @@ students:
                             - Software architecture
                             - Product Line architecture
         present_career:     KAIST
+        degree:             PhD
     - !!models.Student
         family_name_en:     Park
         name_en:            Taehyun
@@ -20,7 +21,8 @@ students:
         research_areas:     
                             - Software reconstruction
                             - Global software development
-        present_career:     KAIST      
+        present_career:     KAIST
+        degree:             PhD      
     - !!models.Student
         family_name_en:     Eom
         name_en:            Seokhwan
@@ -30,20 +32,37 @@ students:
         research_areas:     
                             - Product Line Traceability
         present_career:     Hyundai Mobis
-# LoginUser
-loginUsers:
-    - !!models.LoginUser
-         login_id:  byron1st
-         password:  
-         student:   !! models.Student
-                        id: 1
-    - !!models.LoginUser
-         login_id:  dana.park
-         password:  
-         student:   !! models.Student
-                        id: 2         
-    - !!models.LoginUser
-         login_id:  esh21c
-         password:  
-         student:   !! models.Student
-                        id: 3         
+        degree:             Master
+    - !!models.Student
+        family_name_en:     Kim
+        name_en:            Jungmin
+        family_name_ko:     김
+        name_ko:            정민
+        email:              jmin11@kaist.ac.kr
+        research_areas:     
+                            - Problem Frames
+                            - Design Patterns
+        present_career:     KAIST
+        degree:             Master
+    - !!models.Student
+        family_name_en:     Baek
+        name_en:            Haeun
+        family_name_ko:     백
+        name_ko:            하은
+        email:              haeun@kaist.ac.kr
+        research_areas:     
+                            - Software Testing
+                            - Product Lines
+        present_career:     KAIST
+        degree:             Master
+    - !!models.Student
+        family_name_en:     Kang
+        name_en:            Sungju
+        family_name_ko:     강
+        name_ko:            성주
+        email:              sungju@kaist.ac.kr
+        research_areas:     
+                            - Software Product Line Traceability
+                            - Service-Oriented Architecture 
+        present_career:     금융결제원
+        degree:             Master
