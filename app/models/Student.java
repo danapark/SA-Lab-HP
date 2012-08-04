@@ -1,11 +1,13 @@
 package models;
 
 import java.sql.Blob;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+
+import play.data.format.Formats;
 import play.db.ebean.Model;
 import utils.Constants;
 
@@ -22,28 +24,17 @@ public class Student extends Model {
     public String family_name_ko;
     public String name_ko;
     public String email;
-    public String present_career;
     public String degree;
+    public String career;
+    @Formats.DateTime(pattern = "YYYY-MM")
+    public Date career_begin;
     
     public Blob image;
-
     // TODO image 처리는 차후에...
     
     public static Long create(Student student) {
         student.save();
         return student.id;
-    }
-
-    public static void addPresentCareer(Long id, String present_career) {
-        Student student = Student.findById(id);
-        student.present_career = present_career;
-        student.update();
-    }
-
-    public static void addDegree(Long id, String degree) {
-        Student student = Student.findById(id);
-        student.degree = degree;
-        student.update();
     }
     
     public static void update(Student student, Long id) {
@@ -51,32 +42,48 @@ public class Student extends Model {
     }
 
     public static Student findById(Long id) {
-        return find.where().eq("id", id).findUnique();
+        return find
+                .where()
+                    .eq("id", id)
+                .findUnique();
     }
 
     public static Student findByName(String family_name_en, String name_en) {
-        return find.where().eq("family_name_en", family_name_en)
-                .eq("name_en", name_en).findUnique();
+        return find
+                .where()
+                    .eq("family_name_en", family_name_en)
+                    .eq("name_en", name_en)
+                .findUnique();
     }
 
     public static List<Student> all() {
-        return find.all();
+        return find
+                .all();
     }
 
     public static List<Student> allMaster() {
-        // TODO 입학년도 순으로 정렬하기 (차후 History)
-        return find.where().eq("present_career", Constants.KAIST)
-                .eq("degree", Constants.Master).findList();
+        return find
+                .where()
+                    .eq("career", Constants.KAIST)
+                    .eq("degree", Constants.Master)
+                .orderBy("career_begin asc")
+                .findList();
     }
 
     public static List<Student> allPhD() {
-        // TODO 입학년도 순으로 정렬하기 (차후 History)
-        return find.where().eq("present_career", Constants.KAIST)
-                .eq("degree", Constants.PhD).findList();
+        return find
+                .where()
+                    .eq("career", Constants.KAIST)
+                    .eq("degree", Constants.PhD)
+                .orderBy("career_begin asc")
+                .findList();
     }
 
     public static List<Student> allAlumni() {
-        // TODO 졸업년도 순으로 정렬하기 (차후 History)
-        return find.where().ne("present_career", Constants.KAIST).findList();
+        return find
+                .where()
+                    .ne("career", Constants.KAIST)
+                .orderBy("career_begin desc")    
+                .findList();
     }
 }

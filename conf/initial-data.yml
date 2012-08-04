@@ -6,45 +6,60 @@ students:
         family_name_ko:     안
         name_ko:            휘
         email:              ahnhwi@kaist.ac.kr
-        present_career:     KAIST
-        degree:             PhD
+        career:             KAIST
+        degree:             phd
+        career_begin:       2012-02-01
     - !!models.Student
         family_name_en:     Park
         name_en:            Taehyun
         family_name_ko:     박
         name_ko:            태현
         email:              tpark@kaist.ac.kr
-        present_career:     KAIST
-        degree:             PhD      
-    - !!models.Student
-        family_name_en:     Eom
-        name_en:            Seokhwan
-        family_name_ko:     엄
-        name_ko:            석환
-        email:              esh21c@gmail.com
-        present_career:     Hyundai Mobis
-        degree:             Master
-    - !!models.Student
-        family_name_en:     Kim
-        name_en:            Jungmin
-        family_name_ko:     김
-        name_ko:            정민
-        email:              jmin11@kaist.ac.kr
-        present_career:     KAIST
-        degree:             Master
-    - !!models.Student
-        family_name_en:     Baek
-        name_en:            Haeun
-        family_name_ko:     백
-        name_ko:            하은
-        email:              haeun@kaist.ac.kr
-        present_career:     KAIST
-        degree:             Master
+        career:             KAIST
+        degree:             phd
+        career_begin:       2012-08-01
     - !!models.Student
         family_name_en:     Kang
         name_en:            Sungju
         family_name_ko:     강
         name_ko:            성주
         email:              sungju@kaist.ac.kr
-        present_career:     금융결제원
-        degree:             Master
+        career:             금융결제원
+        degree:             master
+        career_begin:       2011-02-01      
+    - !!models.Student
+        family_name_en:     Eom
+        name_en:            Seokhwan
+        family_name_ko:     엄
+        name_ko:            석환
+        email:              esh21c@gmail.com
+        career:             Hyundai Mobis
+        degree:             master
+        career_begin:       2012-02-01
+    - !!models.Student
+        family_name_en:     Kim
+        name_en:            Jungmin
+        family_name_ko:     김
+        name_ko:            정민
+        email:              jmin11@kaist.ac.kr
+        career:             KAIST
+        degree:             master
+        career_begin:       2011-02-01
+    - !!models.Student
+        family_name_en:     Baek
+        name_en:            Haeun
+        family_name_ko:     백
+        name_ko:            하은
+        email:              haeun@kaist.ac.kr
+        career:             KAIST
+        degree:             master
+        career_begin:       2011-02-01
+    - !!models.Student
+        family_name_en:     Jung
+        name_en:            Philsu
+        family_name_ko:     정
+        name_ko:            필수
+        email:              jungphisu@kaist.ac.kr
+        career:             KAIST
+        degree:             master
+        career_begin:       2012-02-01

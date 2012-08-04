@@ -18,18 +18,6 @@ public class StudentTest extends ModelTest {
         Long id = Student.create(student);
         assertThat(Student.findById(id).name_en).isEqualTo("Juhee");
     }
-    
-    @Test
-    public void addPresentCareer() throws Exception {
-        Student.addPresentCareer(1l, "ETRI");
-        assertThat(Student.findById(1l).present_career).isEqualTo("ETRI");
-    }
-    
-    @Test
-    public void addDegree() throws Exception {
-        Student.addDegree(1l, "Master");
-        assertThat(Student.findById(1l).degree).isEqualTo("Master");
-    }
 
     @Test
     public void findById() throws Exception {
@@ -52,14 +40,14 @@ public class StudentTest extends ModelTest {
 
     @Test
     public void all() throws Exception {
-        assertThat(Student.all().size()).isEqualTo(6);
+        assertThat(Student.all().size()).isEqualTo(7);
     }
 
     @Test
     public void allMaster() {
         List<Student> students = Student.allMaster();
-        assertThat(students.size()).isEqualTo(2);
-        assertThat(students.get(0).name_en).isEqualTo("Jungmin");
+        assertThat(students.size()).isEqualTo(3);
+        assertThat(students.get(2).name_en).isEqualTo("Philsu");
     }
 
     @Test
