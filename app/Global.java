@@ -22,7 +22,12 @@ public class Global extends GlobalSettings {
                 Map<String, List<Object>> all = (Map<String, List<Object>>) Yaml
                         .load("initial-data.yml");
 
+                Ebean.save(all.get("researchAreas"));
                 Ebean.save(all.get("students"));
+                for(Object student: all.get("students")) {
+                    Ebean.saveManyToManyAssociations(student, "researchAreas");
+                }
+                
             }
         }
     }

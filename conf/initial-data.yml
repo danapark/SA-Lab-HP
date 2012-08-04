@@ -9,6 +9,13 @@ students:
         career:             KAIST
         degree:             phd
         career_begin:       2012-02-01
+        researchAreas:      
+                            - !!models.ResearchArea
+                                id: 2
+                            - !!models.ResearchArea
+                                id: 3
+                            - !!models.ResearchArea
+                                id: 10
     - !!models.Student
         family_name_en:     Park
         name_en:            Taehyun
@@ -18,6 +25,11 @@ students:
         career:             KAIST
         degree:             phd
         career_begin:       2012-08-01
+        researchAreas:      
+                            - !!models.ResearchArea
+                                id: 2
+                            - !!models.ResearchArea
+                                id: 9
     - !!models.Student
         family_name_en:     Kang
         name_en:            Sungju
@@ -26,7 +38,14 @@ students:
         email:              sungju@kaist.ac.kr
         career:             금융결제원
         degree:             master
-        career_begin:       2011-02-01      
+        career_begin:       2011-02-01
+        researchAreas:      
+                            - !!models.ResearchArea
+                                id: 1
+                            - !!models.ResearchArea
+                                id: 2
+                            - !!models.ResearchArea
+                                id: 6
     - !!models.Student
         family_name_en:     Eom
         name_en:            Seokhwan
@@ -36,6 +55,11 @@ students:
         career:             Hyundai Mobis
         degree:             master
         career_begin:       2012-02-01
+        researchAreas:      
+                            - !!models.ResearchArea
+                                id: 1
+                            - !!models.ResearchArea
+                                id: 6
     - !!models.Student
         family_name_en:     Kim
         name_en:            Jungmin
@@ -45,6 +69,9 @@ students:
         career:             KAIST
         degree:             master
         career_begin:       2011-02-01
+        researchAreas:      
+                            - !!models.ResearchArea
+                                id: 2
     - !!models.Student
         family_name_en:     Baek
         name_en:            Haeun
@@ -54,6 +81,13 @@ students:
         career:             KAIST
         degree:             master
         career_begin:       2011-02-01
+        researchAreas:      
+                            - !!models.ResearchArea
+                                id: 2
+                            - !!models.ResearchArea
+                                id: 7
+                            - !!models.ResearchArea
+                                id: 8
     - !!models.Student
         family_name_en:     Jung
         name_en:            Philsu
@@ -63,3 +97,35 @@ students:
         career:             KAIST
         degree:             master
         career_begin:       2012-02-01
+        researchAreas:      
+                            - !!models.ResearchArea
+                                id: 1
+                            - !!models.ResearchArea
+                                id: 2
+
+# ResearchArea
+researchAreas:
+    - !!models.ResearchArea
+        name:               Software Engineering
+    - !!models.ResearchArea
+        name:               Software Product Line
+    - !!models.ResearchArea
+        name:               Software Architecture
+    - !!models.ResearchArea
+        name:               Software Product Line Architecture
+    - !!models.ResearchArea
+        name:               Software Process
+    - !!models.ResearchArea
+        name:               Software Product Line Traceability
+    - !!models.ResearchArea
+        name:               Software Testing
+    - !!models.ResearchArea
+        name:               Software Product Line Testing
+    - !!models.ResearchArea
+        name:               Software Architecture Reconstruction
+    - !!models.ResearchArea
+        name:               Service-Oriented Architecture
+    - !!models.ResearchArea
+        name:               Software Mining
+    - !!models.ResearchArea
+        name:               Variability Representation

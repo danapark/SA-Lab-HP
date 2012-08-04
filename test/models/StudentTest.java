@@ -48,6 +48,7 @@ public class StudentTest extends ModelTest {
         List<Student> students = Student.allMaster();
         assertThat(students.size()).isEqualTo(3);
         assertThat(students.get(2).name_en).isEqualTo("Philsu");
+        assertThat(students.get(2).researchAreas.get(0).id).isEqualTo(1l);
     }
 
     @Test
@@ -55,6 +56,7 @@ public class StudentTest extends ModelTest {
         List<Student> students = Student.allPhD();
         assertThat(students.size()).isEqualTo(2);
         assertThat(students.get(0).name_en).isEqualTo("Hwi");
+        assertThat(students.get(0).researchAreas.get(0).id).isEqualTo(2l);
     }
 
     @Test
@@ -62,5 +64,6 @@ public class StudentTest extends ModelTest {
         List<Student> students = Student.allAlumni();
         assertThat(students.size()).isEqualTo(2);
         assertThat(students.get(0).name_en).isEqualTo("Seokhwan");
+        assertThat(students.get(0).researchAreas.get(0).id).isEqualTo(1l);
     }
 }

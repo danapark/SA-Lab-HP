@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import play.data.format.Formats;
 import play.db.ebean.Model;
@@ -28,6 +29,9 @@ public class Student extends Model {
     public String career;
     @Formats.DateTime(pattern = "YYYY-MM")
     public Date career_begin;
+    
+    @ManyToMany
+    public List<ResearchArea> researchAreas;
     
     public Blob image;
     // TODO image 처리는 차후에...
@@ -63,6 +67,7 @@ public class Student extends Model {
 
     public static List<Student> allMaster() {
         return find
+                .fetch("researchAreas")
                 .where()
                     .eq("career", Constants.KAIST)
                     .eq("degree", Constants.Master)
@@ -72,6 +77,7 @@ public class Student extends Model {
 
     public static List<Student> allPhD() {
         return find
+                .fetch("researchAreas")
                 .where()
                     .eq("career", Constants.KAIST)
                     .eq("degree", Constants.PhD)
@@ -81,6 +87,7 @@ public class Student extends Model {
 
     public static List<Student> allAlumni() {
         return find
+                .fetch("researchAreas")
                 .where()
                     .ne("career", Constants.KAIST)
                 .orderBy("career_begin desc")    
