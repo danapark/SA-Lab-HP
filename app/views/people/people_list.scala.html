@@ -1,0 +1,12 @@
+@(title: String, current_year: Int)(content: Html)
+
+@layout(title) {
+<div class="container">
+@current_year
+  @views.html.people.people_menu(title, current_year)
+  <div class="page-header">
+    <h1>@title</h1>
+  </div>
+  @content
+</div>
+}

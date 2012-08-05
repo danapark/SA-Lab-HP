@@ -1,0 +1,30 @@
+@(title: String, year: Int)
+@isActive(check: String) = @{
+    if(check.equals("Student")){
+        if(title.equals("Master students") || title.equals("Ph.D students")) {"active"}
+    }
+    if(check.equals(title)){"active"}
+}
+@alumniMenu() = @{
+    
+}
+
+<ul class="nav nav-pills pull-right">
+  <li class="@isActive("Kang, Sungwon")">
+    <a href="@routes.PeopleController.professor()">Professor</a>
+  </li>
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Students<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <a href="@routes.PeopleController.phds()">Ph.D</a>
+      <a href="@routes.PeopleController.masters()">Master</a>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Alumni<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <a href="@routes.PeopleController.alumni()">All</a>
+      <a href="@routes.PeopleController.masters()">Master</a>
+    </ul>
+  </li>
+</ul>
