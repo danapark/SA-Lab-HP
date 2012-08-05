@@ -1,7 +1,6 @@
-@(message: String)
+@(title: String)
 
-@main("Welcome to Play 2.0") {
-    
-    @play20.welcome(message, style = "Java")
-    
+@layout(title){
+  @views.html.menu_bar()
+  
 }
