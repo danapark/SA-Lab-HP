@@ -7,7 +7,8 @@ students:
         name_ko:            휘
         email:              ahnhwi@kaist.ac.kr
         career:             KAIST
-        degree:             phd
+        degree:             Ph.D
+        location:           KI building (C304), Daejeon
         career_begin:       2012-02-01
         researchAreas:      
                             - !!models.ResearchArea
@@ -23,7 +24,8 @@ students:
         name_ko:            태현
         email:              tpark@kaist.ac.kr
         career:             KAIST
-        degree:             phd
+        degree:             Ph.D
+        location:           KI building (C304), Daejeon
         career_begin:       2012-08-01
         researchAreas:      
                             - !!models.ResearchArea
@@ -37,7 +39,7 @@ students:
         name_ko:            성주
         email:              sungju@kaist.ac.kr
         career:             금융결제원
-        degree:             master
+        degree:             Master
         career_begin:       2011-02-01
         researchAreas:      
                             - !!models.ResearchArea
@@ -53,7 +55,7 @@ students:
         name_ko:            석환
         email:              esh21c@gmail.com
         career:             Hyundai Mobis
-        degree:             master
+        degree:             Master
         career_begin:       2012-02-01
         researchAreas:      
                             - !!models.ResearchArea
@@ -67,7 +69,8 @@ students:
         name_ko:            정민
         email:              jmin11@kaist.ac.kr
         career:             KAIST
-        degree:             master
+        degree:             Master
+        location:           KI building (C304), Daejeon
         career_begin:       2011-02-01
         researchAreas:      
                             - !!models.ResearchArea
@@ -77,9 +80,10 @@ students:
         name_en:            Haeun
         family_name_ko:     백
         name_ko:            하은
+        location:           KI building (C304), Daejeon
         email:              haeun@kaist.ac.kr
         career:             KAIST
-        degree:             master
+        degree:             Master
         career_begin:       2011-02-01
         researchAreas:      
                             - !!models.ResearchArea
@@ -95,7 +99,8 @@ students:
         name_ko:            필수
         email:              jungphisu@kaist.ac.kr
         career:             KAIST
-        degree:             master
+        degree:             Master
+        location:           KI building (C304), Daejeon
         career_begin:       2012-02-01
         researchAreas:      
                             - !!models.ResearchArea

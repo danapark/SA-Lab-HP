@@ -44,7 +44,7 @@ public class StudentTest extends ModelTest {
     }
 
     @Test
-    public void allMaster() {
+    public void allMaster() throws Exception {
         List<Student> students = Student.allMaster();
         assertThat(students.size()).isEqualTo(3);
         assertThat(students.get(2).name_en).isEqualTo("Philsu");
@@ -52,7 +52,7 @@ public class StudentTest extends ModelTest {
     }
 
     @Test
-    public void allPhD() {
+    public void allPhD() throws Exception {
         List<Student> students = Student.allPhD();
         assertThat(students.size()).isEqualTo(2);
         assertThat(students.get(0).name_en).isEqualTo("Hwi");
@@ -60,10 +60,15 @@ public class StudentTest extends ModelTest {
     }
 
     @Test
-    public void allAlumni() {
+    public void allAlumni() throws Exception {
         List<Student> students = Student.allAlumni();
         assertThat(students.size()).isEqualTo(2);
         assertThat(students.get(0).name_en).isEqualTo("Seokhwan");
         assertThat(students.get(0).researchAreas.get(0).id).isEqualTo(1l);
+    }
+    
+    @Test
+    public void allAlumniByYear() throws Exception {
+        assertThat(Student.allAlumniByYear(2011).size()).isEqualTo(1);
     }
 }

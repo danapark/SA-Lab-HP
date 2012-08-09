@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.Calendar;
+import models.Student;
 
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -15,14 +16,14 @@ public class PeopleController extends Controller {
     }
     
     public static Result masters() {
-        return TODO;
+        return ok(students.render("Master students", current_year, Student.allMaster()));
     }
     
     public static Result phds() {
-        return TODO;
+        return ok(students.render("Ph.D students", current_year, Student.allPhD()));
     }
     
-    public static Result alumni() {
-        return TODO;
+    public static Result alumni(int year) {
+        return ok(students.render("Alumni at " + year, current_year, Student.allAlumniByYear(year)));
     }
 }

@@ -1,0 +1,9 @@
+@(title: String, current_year: Int, students: List[Student])
+
+@people_list(title, current_year) {
+  @for(student <- students) {
+    <div class="well">
+      @student_template(student)
+    </div>
+  }
+}

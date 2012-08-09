@@ -1,12 +1,6 @@
-@(title: String, year: Int)
+@(title: String, current_year: Int)
 @isActive(check: String) = @{
-    if(check.equals("Student")){
-        if(title.equals("Master students") || title.equals("Ph.D students")) {"active"}
-    }
     if(check.equals(title)){"active"}
-}
-@alumniMenu() = @{
-    
 }
 
 <ul class="nav nav-pills pull-right">
@@ -23,8 +17,9 @@
   <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Alumni<b class="caret"></b></a>
     <ul class="dropdown-menu">
-      <a href="@routes.PeopleController.alumni()">All</a>
-      <a href="@routes.PeopleController.masters()">Master</a>
+      @for(i <- 2005 to current_year) {
+        <a href="@routes.PeopleController.alumni(i)">@i</a>
+      }
     </ul>
   </li>
 </ul>

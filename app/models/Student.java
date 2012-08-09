@@ -27,6 +27,7 @@ public class Student extends Model {
     public String email;
     public String degree;
     public String career;
+    public String location;
     @Formats.DateTime(pattern = "YYYY-MM")
     public Date career_begin;
     
@@ -90,6 +91,16 @@ public class Student extends Model {
                 .fetch("researchAreas")
                 .where()
                     .ne("career", Constants.KAIST)
+                .orderBy("career_begin desc")    
+                .findList();
+    }
+    
+    public static List<Student> allAlumniByYear(int year) {
+        return find
+                .fetch("researchAreas")
+                .where()
+                    .ne("career", Constants.KAIST)
+                    .contains("career_begin", Integer.toString(year))
                 .orderBy("career_begin desc")    
                 .findList();
     }

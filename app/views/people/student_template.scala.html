@@ -1,0 +1,27 @@
+@(student: Student)
+
+<div class="row-fluid">
+    <div class="span3">
+      Image will be posted here.
+    </div>
+    <div class="span9">
+      <h3>@student.degree candidate, @student.career</h3>
+      <h5><i class="icon-envelope"></i>@student.email</h5>
+      <ul>
+        <li>Name: @student.family_name_en, @student.name_en (@student.family_name_ko @student.name_ko)</li>
+        @if(student.location != null) {
+          <li>Location: @student.location</li>
+        }
+      </ul>
+      <h4>Research Areas</h4>
+      <ul>
+        @for(area <- student.researchAreas){
+          <li>@area.name</li>
+        }
+      </ul>
+      <h4>Publications</h4>
+      <ul>
+        <li>Will be updated...</li>
+      </ul>
+    </div>
+</div>

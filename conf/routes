@@ -12,4 +12,7 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET     /people/professor           controllers.PeopleController.professor()
 GET     /people/masters             controllers.PeopleController.masters()
 GET     /people/phds                controllers.PeopleController.phds()
-GET     /people/alumni              controllers.PeopleController.alumni()
+GET     /people/alumni/:year        controllers.PeopleController.alumni(year: Int)
+
+# Management
+GET     /mgmt/people                controllers.PeopleMgmtController.index()

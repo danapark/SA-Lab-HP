@@ -1,8 +1,8 @@
-@(title: String, current_year: Int)(content: Html)
+@(title: String)(content: Html)
 
 @layout(title) {
 <div class="container">
-  @people_menu(title, current_year)
+  @mgmt_menu()
   <div class="page-header">
     <h1>@title</h1>
   </div>
