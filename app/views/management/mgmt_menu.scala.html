@@ -1,1 +1,24 @@
-menu!
+@(title: String)
+@isActive(check: String) = @{
+    if(check.equals("People Management")){
+        if(title.equals("Professor Management") || title.equals("Students Management") || title.equals("Alumni Management")) {"active"}
+    }
+    if(check.equals(title)){"active"}
+}
+<div class="well" style="padding: 8px 0;">
+  <ul class="nav nav-list">
+    <li class="nav-header">Site administration</li>
+    <li class="@isActive("People Management")">
+      <a href="@routes.PeopleMgmtController.professor()">People</a>
+    </li>
+    <li class="@isActive("Publications Management")">
+      <a href="#">Publications</a>
+    </li>
+    <li class="@isActive("Courses Management")">
+      <a href="#">Courses</a>
+    </li>
+    <li class="@isActive("Events Management")">
+      <a href="#">Lab Events</a>
+    </li>
+  </ul>
+</div>

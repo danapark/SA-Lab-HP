@@ -1,0 +1,24 @@
+@(title: String, students: List[Student])
+
+@people_mgmt(title){
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Family Name</th>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(student <- students){
+        <tr>
+          <td>Login ID(Not implemented)</td>
+          <td>@student.family_name_en</td>
+          <td>@student.name_en</td>
+          <td><a href="@routes.PeopleMgmtController.studentDetail(student.id)" class="btn">Edit</a></td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

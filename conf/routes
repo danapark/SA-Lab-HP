@@ -15,4 +15,7 @@ GET     /people/phds                controllers.PeopleController.phds()
 GET     /people/alumni/:year        controllers.PeopleController.alumni(year: Int)
 
 # Management
-GET     /mgmt/people                controllers.PeopleMgmtController.index()
+GET     /mgmt/people/professor      controllers.PeopleMgmtController.professor()
+GET     /mgmt/people/students       controllers.PeopleMgmtController.students()
+GET     /mgmt/people/alumni         controllers.PeopleMgmtController.alumni()
+GET     /mgmt/people/student/:id    controllers.PeopleMgmtController.studentDetail(id: Long)

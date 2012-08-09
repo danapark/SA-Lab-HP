@@ -85,6 +85,14 @@ public class Student extends Model {
                 .orderBy("career_begin asc")
                 .findList();
     }
+    
+    public static List<Student> allStudents() {
+        return find
+                .where()
+                    .eq("career", Constants.KAIST)
+                .orderBy("family_name_en asc")
+                .findList();
+    }
 
     public static List<Student> allAlumni() {
         return find

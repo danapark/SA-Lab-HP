@@ -2,10 +2,13 @@
 
 @layout(title) {
 <div class="container">
-  @mgmt_menu()
-  <div class="page-header">
-    <h1>@title</h1>
+  <div class="row-fluid">
+    <div class="span2">
+      @mgmt_menu(title)
+    </div>
+    <div class="span10">
+      @content
+    </div>
   </div>
-  @content
 </div>
 }

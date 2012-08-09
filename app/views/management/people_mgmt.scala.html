@@ -1,5 +1,10 @@
-@(title: String)
+@(title: String)(content: Html)
 
 @site_mgmt(title){
-  people management!!
+  <div class="row-fluid">
+    @people_mgmt_menu(title)
+  </div>
+  <div clas="row-fluid">
+    @content
+  </div>
 }

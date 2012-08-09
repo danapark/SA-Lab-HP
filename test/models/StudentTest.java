@@ -58,6 +58,13 @@ public class StudentTest extends ModelTest {
         assertThat(students.get(0).name_en).isEqualTo("Hwi");
         assertThat(students.get(0).researchAreas.get(0).id).isEqualTo(2l);
     }
+    
+    @Test
+    public void allStudents() throws Exception {
+        List<Student> students = Student.allStudents();
+        assertThat(students.size()).isEqualTo(5);
+        assertThat(students.get(0).family_name_en).isEqualTo("Ahn");
+    }
 
     @Test
     public void allAlumni() throws Exception {
