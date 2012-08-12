@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Student;
+import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -16,11 +17,28 @@ public class PeopleMgmtController extends Controller {
         return ok(students_list.render("Students Management", Student.allStudents()));
     }
     
-    public static Result studentDetail(Long id) {
-        return TODO;
+    public static Result studentDetail(Long id, String title) {
+        Form<Student> studentForm = form(Student.class).fill(Student.findByIdWithResearch(id));
+        return ok(student_mgmt.render(title, studentForm));
+    }
+    
+    public static Result saveStudentDetail(Long id) {
+        Form<Student> studentForm = form(Student.class).bindFromRequest();
+        
+        if(studentForm.hasErrors())
+            return badRequest(student_mgmt.render("Students Management", studentForm));
+        else {
+            Student student = studentForm.get();
+            student.id = id;
+            student.update();
+            if(student.career.equals("KAIST"))
+                return redirect(routes.PeopleMgmtController.students());
+            else
+                return redirect(routes.PeopleMgmtController.alumni());
+        }
     }
     
     public static Result alumni() {
-        return TODO;
+        return ok(students_list.render("Alumni Management", Student.allAlumni()));
     }
 }

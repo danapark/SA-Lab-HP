@@ -1,0 +1,130 @@
+@(title: String, student: Form[Student])
+
+@people_mgmt(title){
+  <div class="well">
+    <form action="@routes.PeopleMgmtController.saveStudentDetail(student("id").value.toLong)" class="form-horizontal" method="post" id="saveBasicInfo">
+      <fieldset>
+        <legend><strong>Basic Information</strong></legend>
+        <br>
+        <div class="row-fluid">    
+          <div class="span5">
+            <div class="control-group">
+              <label class="control-label" for="family_name_en">Family Name (en)</label>
+              <div class="controls">
+                <input type="text" value="@student("family_name_en").value" name="family_name_en">
+              </div>
+            </div>
+            
+            <div class="control-group">
+              <label class="control-label" for="name_en">Name (en)</label>
+              <div class="controls">
+                <input type="text" value="@student("name_en").value" name="name_en">
+              </div>
+            </div>
+            
+            <div class="control-group">
+              <label class="control-label" for="family_name_ko">Family Name (ko)</label>
+              <div class="controls">
+                <input type="text" value="@student("family_name_ko").value" name="family_name_ko">
+              </div>
+            </div>
+            
+            <div class="control-group">
+              <label class="control-label" for="name_ko">Name (ko)</label>
+              <div class="controls">
+                <input type="text" value="@student("name_ko").value" name="name_ko">
+              </div>
+            </div>
+            
+            <div class="control-group">
+              <label class="control-label" for="email">E-Mail</label>
+              <div class="controls">
+                <input type="text" value="@student("email").value" name="email">
+              </div>
+            </div>
+          </div>
+          
+          <div class="span5">
+          
+            <div class="control-group">
+              <label class="control-label" for="career_select">Position</label>
+              <div class="controls">
+                <select id="career_select">
+                  <option @if(student("career").value.equals("KAIST")){selected}>KAIST student</option>
+                  <option @if(!(student("career").value.equals("KAIST"))){selected}>Employee</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="control-group hide" id="location">
+              <label class="control-label" for="location">Location</label>
+              <div class="controls">
+                <input type="text" value="@student("location").value" name="location">
+              </div>
+            </div>
+            
+            <div class="control-group hide" id="career">
+              <label class="control-label" for="career">Company</label>
+              <div class="controls">
+                <input type="text" value="@student("career").value" name="career">
+              </div>
+            </div>
+            
+            <div class="control-group">
+              <label class="control-label" for="degree">Degree</label>
+              <div class="controls">
+                <select name="degree">
+                  <option @if(student("degree").value.equals("Ph.D")){selected}>Ph.D</option>
+                  <option @if(student("degree").value.equals("Master")){selected}>Master</option>
+                </select>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="row-fluid">
+          <div class="span5"></div>
+          <div class="span5">
+          <div class="control-group">
+              <label class="control-label" for="save"></label>    
+              <div class="controls">  
+                <button class="btn btn-primary" id="save">Save</button>
+              </div>
+          </div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  
+  <script>
+    $(document).ready(function(){
+      if($("#career_select").val() == 'KAIST student') {
+        $("#location").show();
+      } else {
+        $("#career").show();
+      }
+      
+      $("#career_select").change(function() {
+        if($("#career_select").val() == 'KAIST student') {
+          $("#location").show();
+          $("#career").hide();
+        } else {
+          $("#career").show();
+          $("#location").hide();
+        }
+      });
+      
+      $("#save").click(function() {
+        if($("#career_select").val() == 'KAIST student') {
+          $("[name='career']").val('KAIST');
+        } else {
+          $("[name='location']").val('');
+        }
+        
+        $("form#saveBasicInfo").submit();
+      });
+    })
+  </script>
+}

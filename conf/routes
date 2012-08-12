@@ -18,4 +18,5 @@ GET     /people/alumni/:year        controllers.PeopleController.alumni(year: In
 GET     /mgmt/people/professor      controllers.PeopleMgmtController.professor()
 GET     /mgmt/people/students       controllers.PeopleMgmtController.students()
 GET     /mgmt/people/alumni         controllers.PeopleMgmtController.alumni()
-GET     /mgmt/people/student/:id    controllers.PeopleMgmtController.studentDetail(id: Long)
+GET     /mgmt/people/student/:id    controllers.PeopleMgmtController.studentDetail(id: Long, title: String)
+POST    /mgmt/people/student/:id    controllers.PeopleMgmtController.saveStudentDetail(id: Long)

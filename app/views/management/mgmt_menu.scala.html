@@ -1,9 +1,10 @@
 @(title: String)
 @isActive(check: String) = @{
     if(check.equals("People Management")){
-        if(title.equals("Professor Management") || title.equals("Students Management") || title.equals("Alumni Management")) {"active"}
+        if(title.equals("Professor Management") || title.equals("Students Management") || title.equals("Alumni Management")){"active"}
+    } else {
+        if(check.equals(title)){"active"}
     }
-    if(check.equals(title)){"active"}
 }
 <div class="well" style="padding: 8px 0;">
   <ul class="nav nav-list">

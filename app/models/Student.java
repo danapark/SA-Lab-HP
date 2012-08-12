@@ -42,12 +42,20 @@ public class Student extends Model {
         return student.id;
     }
     
-    public static void update(Student student, Long id) {
-        student.update(id);
-    }
+//    public static void update(Student student, Long id) {
+//        student.update(id);
+//    }
 
     public static Student findById(Long id) {
         return find
+                .where()
+                    .eq("id", id)
+                .findUnique();
+    }
+    
+    public static Student findByIdWithResearch(Long id) {
+        return find
+                .fetch("researchAreas")
                 .where()
                     .eq("id", id)
                 .findUnique();

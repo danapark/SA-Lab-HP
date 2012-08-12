@@ -23,15 +23,15 @@ public class StudentTest extends ModelTest {
     public void findById() throws Exception {
         assertThat(Student.findById(1l).family_name_en).isEqualTo("Ahn");
     }
-    
-    @Test
-    public void update() throws Exception {
-        Student student = new Student();
-        student.email = "hwi.ahn@gmail.com";
-        Student.update(student, 1l);
-        assertThat(Student.findById(1l).email).isEqualTo("hwi.ahn@gmail.com");
-        assertThat(Student.findById(1l).name_en).isEqualTo("Hwi");
-    }
+//    
+//    @Test
+//    public void update() throws Exception {
+//        Student student = new Student();
+//        student.email = "hwi.ahn@gmail.com";
+//        Student.update(student, 1l);
+//        assertThat(Student.findById(1l).email).isEqualTo("hwi.ahn@gmail.com");
+//        assertThat(Student.findById(1l).name_en).isEqualTo("Hwi");
+//    }
 
     @Test
     public void findByName() throws Exception {
