@@ -18,8 +18,7 @@ public class PeopleMgmtController extends Controller {
     }
     
     public static Result studentDetail(Long id, String title) {
-        Form<Student> studentForm = form(Student.class).fill(Student.findByIdWithResearch(id));
-        return ok(student_mgmt.render(title, studentForm));
+        return ok(student_mgmt.render(title, form(Student.class).fill(Student.findById(id))));
     }
     
     public static Result saveStudentDetail(Long id) {

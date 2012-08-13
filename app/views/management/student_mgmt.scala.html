@@ -1,6 +1,7 @@
 @(title: String, student: Form[Student])
 
 @people_mgmt(title){
+
   <div class="well">
     <form action="@routes.PeopleMgmtController.saveStudentDetail(student("id").value.toLong)" class="form-horizontal" method="post" id="saveBasicInfo">
       <fieldset>
@@ -71,6 +72,14 @@
             </div>
             
             <div class="control-group">
+              <label class="control-label" for="career_begin">Career Begin (Date)</label>
+              <div class="controls">
+                <input type="text" value="@student("career_begin").value.format("yyyy-MM-dd")" name="career_begin">
+                <span class="help-block">format (YYYY-MM-DD)</span>
+              </div>
+            </div>
+            
+            <div class="control-group">
               <label class="control-label" for="degree">Degree</label>
               <div class="controls">
                 <select name="degree">
@@ -97,6 +106,13 @@
       </fieldset>
     </form>
   </div>
+  
+  <div class="well">
+    <fieldset>
+      <legend><strong>Research Areas</strong></legend>
+      
+    </fieldset>  
+  </div>  
   
   <script>
     $(document).ready(function(){

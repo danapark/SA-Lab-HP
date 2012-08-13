@@ -28,7 +28,7 @@ public class Student extends Model {
     public String degree;
     public String career;
     public String location;
-    @Formats.DateTime(pattern = "YYYY-MM")
+    @Formats.DateTime(pattern = "yyyy-MM-dd")
     public Date career_begin;
     
     @ManyToMany
@@ -41,10 +41,6 @@ public class Student extends Model {
         student.save();
         return student.id;
     }
-    
-//    public static void update(Student student, Long id) {
-//        student.update(id);
-//    }
 
     public static Student findById(Long id) {
         return find
