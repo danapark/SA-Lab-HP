@@ -1,7 +1,6 @@
 @(title: String, student: Form[Student])
 
 @people_mgmt(title){
-
   <div class="well">
     <form action="@routes.PeopleMgmtController.saveStudentDetail(student("id").value.toLong)" class="form-horizontal" method="post" id="saveBasicInfo">
       <fieldset>
@@ -48,38 +47,6 @@
           <div class="span5">
           
             <div class="control-group">
-              <label class="control-label" for="career_select">Position</label>
-              <div class="controls">
-                <select id="career_select">
-                  <option @if(student("career").value.equals("KAIST")){selected}>KAIST student</option>
-                  <option @if(!(student("career").value.equals("KAIST"))){selected}>Employee</option>
-                </select>
-              </div>
-            </div>
-            
-            <div class="control-group hide" id="location">
-              <label class="control-label" for="location">Location</label>
-              <div class="controls">
-                <input type="text" value="@student("location").value" name="location">
-              </div>
-            </div>
-            
-            <div class="control-group hide" id="career">
-              <label class="control-label" for="career">Company</label>
-              <div class="controls">
-                <input type="text" value="@student("career").value" name="career">
-              </div>
-            </div>
-            
-            <div class="control-group">
-              <label class="control-label" for="career_begin">Career Begin (Date)</label>
-              <div class="controls">
-                <input type="text" value="@student("career_begin").value.format("yyyy-MM-dd")" name="career_begin">
-                <span class="help-block">format (YYYY-MM-DD)</span>
-              </div>
-            </div>
-            
-            <div class="control-group">
               <label class="control-label" for="degree">Degree</label>
               <div class="controls">
                 <select name="degree">
@@ -89,6 +56,34 @@
               </div>
             </div>
             
+            <div class="control-group">
+              <label class="control-label">Is Alumni?</label>
+              <div class="controls">
+                <label class="radio inline">
+                  <input type="radio" name="isAlumni" id="isAlumni" @if(student("isAlumni").value.equals("true")){checked} value="true">
+                  Yes
+                </label>
+                <label class="radio inline">
+                  <input type="radio" name="isAlumni" id="isAlumni" @if(student("isAlumni").value.equals("false")){checked} value="false">
+                  No
+                </label>
+              </div>
+            </div>  
+            
+            <div class="control-group" id="company">
+              <label class="control-label" for="company">Company</label>
+              <div class="controls">
+                <input type="text" value="@student("company").value" name="company">
+              </div>
+            </div>
+            
+            <div class="control-group">
+              <label class="control-label" for="begin_date"></label>
+              <div class="controls">
+                <input type="text" value="@student("begin_date").value.format("yyyy-MM-dd")" name="begin_date">
+                <i><font color="red">date format: YYYY-MM-DD</font></i>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -107,40 +102,26 @@
     </form>
   </div>
   
-  <div class="well">
-    <fieldset>
-      <legend><strong>Research Areas</strong></legend>
+  <div id="researchAreasList" class="well">
       
-    </fieldset>  
   </div>  
   
   <script>
-    $(document).ready(function(){
-      if($("#career_select").val() == 'KAIST student') {
-        $("#location").show();
+    function check_alumni() {
+      var isAlumni = $('input:radio[name=isAlumni]:checked').val(); 
+      if(isAlumni == "true") {
+        $('label.control-label[for=begin_date]').html("Graduation date");
+        $('#company').show();
       } else {
-        $("#career").show();
+        $('label.control-label[for=begin_date]').html("Entrance date");
+        $('#company').hide();
       }
-      
-      $("#career_select").change(function() {
-        if($("#career_select").val() == 'KAIST student') {
-          $("#location").show();
-          $("#career").hide();
-        } else {
-          $("#career").show();
-          $("#location").hide();
-        }
-      });
-      
-      $("#save").click(function() {
-        if($("#career_select").val() == 'KAIST student') {
-          $("[name='career']").val('KAIST');
-        } else {
-          $("[name='location']").val('');
-        }
-        
-        $("form#saveBasicInfo").submit();
-      });
+    }
+    
+    $(document).ready(function(){
+      check_alumni();
+      $('input:radio[id=isAlumni]').change(function(){check_alumni();});      
+      $('#researchAreasList').load('/mgmt/people/student/'+ @student("id").value +'/researchAreasList', @student("id").value);
     })
   </script>
 }

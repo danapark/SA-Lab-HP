@@ -4,9 +4,12 @@ import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+
+import com.avaje.ebean.Ebean;
 
 import play.data.format.Formats;
 import play.db.ebean.Model;
@@ -20,16 +23,18 @@ public class Student extends Model {
 
     @Id
     public Long id;
+    
     public String family_name_en;
     public String name_en;
     public String family_name_ko;
     public String name_ko;
     public String email;
     public String degree;
-    public String career;
-    public String location;
+    public boolean isAlumni;
+    public String company;
+    
     @Formats.DateTime(pattern = "yyyy-MM-dd")
-    public Date career_begin;
+    public Date begin_date;
     
     @ManyToMany
     public List<ResearchArea> researchAreas;
@@ -40,6 +45,20 @@ public class Student extends Model {
     public static Long create(Student student) {
         student.save();
         return student.id;
+    }
+    
+    public static void saveResearchArea(Long studentId, Long researchAreaId) {
+//        Student student = Student.findById(studentId);
+//        ResearchArea researchArea = ResearchArea.findById(researchAreaId);
+//        if()
+//        student.researchAreas.add();
+//        Ebean.saveManyToManyAssociations(student, "researchAreas");
+    }
+    
+    public static void deleteResearchArea(Long studentId, Long researchAreaId) {
+        Student student = Student.findById(studentId);
+        student.researchAreas.remove(ResearchArea.findById(researchAreaId));
+        Ebean.saveManyToManyAssociations(student, "researchAreas");
     }
 
     public static Student findById(Long id) {
@@ -74,9 +93,9 @@ public class Student extends Model {
         return find
                 .fetch("researchAreas")
                 .where()
-                    .eq("career", Constants.KAIST)
+                    .eq("isAlumni", false)
                     .eq("degree", Constants.Master)
-                .orderBy("career_begin asc")
+                .orderBy("begin_date asc")
                 .findList();
     }
 
@@ -84,16 +103,16 @@ public class Student extends Model {
         return find
                 .fetch("researchAreas")
                 .where()
-                    .eq("career", Constants.KAIST)
+                    .eq("isAlumni", false)
                     .eq("degree", Constants.PhD)
-                .orderBy("career_begin asc")
+                .orderBy("begin_date asc")
                 .findList();
     }
     
     public static List<Student> allStudents() {
         return find
                 .where()
-                    .eq("career", Constants.KAIST)
+                    .eq("isAlumni", false)
                 .orderBy("family_name_en asc")
                 .findList();
     }
@@ -102,8 +121,8 @@ public class Student extends Model {
         return find
                 .fetch("researchAreas")
                 .where()
-                    .ne("career", Constants.KAIST)
-                .orderBy("career_begin desc")    
+                    .eq("isAlumni", true)
+                .orderBy("begin_date desc")    
                 .findList();
     }
     
@@ -111,9 +130,9 @@ public class Student extends Model {
         return find
                 .fetch("researchAreas")
                 .where()
-                    .ne("career", Constants.KAIST)
-                    .contains("career_begin", Integer.toString(year))
-                .orderBy("career_begin desc")    
+                    .eq("isAlumni", true)
+                    .contains("begin_date", Integer.toString(year))
+                .orderBy("begin_date desc")    
                 .findList();
     }
 }

@@ -30,7 +30,7 @@ public class PeopleMgmtController extends Controller {
             Student student = studentForm.get();
             student.id = id;
             student.update();
-            if(student.career.equals("KAIST"))
+            if(student.company.equals("KAIST"))
                 return redirect(routes.PeopleMgmtController.students());
             else
                 return redirect(routes.PeopleMgmtController.alumni());
@@ -39,5 +39,15 @@ public class PeopleMgmtController extends Controller {
     
     public static Result alumni() {
         return ok(students_list.render("Alumni Management", Student.allAlumni()));
+    }
+    
+    public static Result getResearchAreas(Long id) {
+        return ok(researchAreasList.render(form(Student.class).fill(Student.findById(id))));
+    }
+    
+    public static Result deleteResearchAreas(Long id, String researchAreaId) {
+        
+        Student.deleteResearchArea(id, Long.parseLong(researchAreaId));
+        return ok(researchAreasList.render(form(Student.class).fill(Student.findById(id))));
     }
 }
