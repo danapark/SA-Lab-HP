@@ -1,0 +1,27 @@
+@(title: String, student: Form[Student], researchAreaNames: List[String])
+
+@people_mgmt(title){
+  <div class="well">
+    <fieldset>
+      <legend><strong>Research Areas</strong></legend>
+      <br>
+      <label>Add a new research area</label>
+      <form action="@routes.PeopleMgmtController.addResearchAreas(student("id").value.toLong, title)" method="post">
+        <input type="text" data-provide="typeahead" data-items="8" data-source="@researchAreaNames" class="span8" name="name">
+        <button class="btn btn-primary" id="save">Save</button>
+      </form>
+      @for(researchArea <- student("researchAreas").indexes) {
+        <ul>
+          <li><h5>@student("researchAreas["+researchArea+"].name").value
+          [<a href="@routes.PeopleMgmtController.deleteResearchAreas(student("id").value.toLong, title, student("researchAreas["+researchArea+"].id").value.toLong)"><font color="red">delete</font></a>]</h5>
+          </li>
+        </ul>
+      }
+    </fieldset>
+    <ul class="pager">
+      <li class="previous">
+        <a href="@routes.PeopleMgmtController.studentDetail(student("id").value.toLong, title)">&larr; Return</a>
+      </li>
+    </ul>
+  </div>
+}

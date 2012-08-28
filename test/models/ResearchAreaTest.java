@@ -23,4 +23,11 @@ public class ResearchAreaTest extends ModelTest{
         
         assertThat(ResearchArea.findById(7l).name).isEqualTo("Software Testing Process");
     }
+    
+    @Test
+    public void alreadyAdded() throws Exception {
+        String name = "Software Product Line";
+        Long userId = 1l;
+        assertThat(ResearchArea.alreadyAdded(userId, name)).isEqualTo(true);
+    }
 }

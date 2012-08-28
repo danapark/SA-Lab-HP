@@ -47,12 +47,15 @@ public class Student extends Model {
         return student.id;
     }
     
-    public static void saveResearchArea(Long studentId, Long researchAreaId) {
-//        Student student = Student.findById(studentId);
-//        ResearchArea researchArea = ResearchArea.findById(researchAreaId);
-//        if()
-//        student.researchAreas.add();
-//        Ebean.saveManyToManyAssociations(student, "researchAreas");
+    public static void saveResearchArea(Long studentId, String researchAreaName) {
+        Student student = Student.findById(studentId);
+        if(!ResearchArea.alreadyExists(researchAreaName)) {
+            ResearchArea.create(researchAreaName);
+        }
+        if(!ResearchArea.alreadyAdded(studentId, researchAreaName)){
+            student.researchAreas.add(ResearchArea.findByName(researchAreaName));
+            Ebean.saveManyToManyAssociations(student, "researchAreas");
+        }
     }
     
     public static void deleteResearchArea(Long studentId, Long researchAreaId) {

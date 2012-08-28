@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -19,7 +20,7 @@ public class ResearchArea extends Model {
     public Long id;
     public String name;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = models.Student.class, mappedBy = "researchAreas")
     public List<Student> students;
     
     public static boolean create(String name) {
@@ -46,7 +47,31 @@ public class ResearchArea extends Model {
                 .findUnique();
     }
     
+    public static List<String> findAllNames() {
+        List<String> results = new ArrayList<String>();
+        for(ResearchArea researchArea : find.select("name").orderBy("name asc").findList()){
+            results.add("\"" + researchArea.name + "\"");
+        }
+        return results;
+    }
+    
     public static void update(ResearchArea researchArea, Long id) {
         researchArea.update(id);
+    }
+    
+    //FIXME 테스트 안 만들었다..
+    public static boolean alreadyExists(String researchAreaName) {
+        int findRowCount = find .where()
+                                    .eq("name", researchAreaName)
+                                .findRowCount();
+        return (findRowCount != 0) ? true : false;
+    }
+    
+    public static boolean alreadyAdded(Long studentId, String researchAreaName) {
+        int findRowCount = find .where()
+                                    .eq("students.id", studentId)
+                                    .eq("name", researchAreaName)
+                                .findRowCount();
+        return (findRowCount != 0) ? true : false;
     }
 }

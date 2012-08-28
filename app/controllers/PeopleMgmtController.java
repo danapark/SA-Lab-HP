@@ -1,5 +1,6 @@
 package controllers;
 
+import models.ResearchArea;
 import models.Student;
 import play.data.Form;
 import play.mvc.Controller;
@@ -30,7 +31,7 @@ public class PeopleMgmtController extends Controller {
             Student student = studentForm.get();
             student.id = id;
             student.update();
-            if(student.company.equals("KAIST"))
+            if(!student.isAlumni)
                 return redirect(routes.PeopleMgmtController.students());
             else
                 return redirect(routes.PeopleMgmtController.alumni());
@@ -41,13 +42,18 @@ public class PeopleMgmtController extends Controller {
         return ok(students_list.render("Alumni Management", Student.allAlumni()));
     }
     
-    public static Result getResearchAreas(Long id) {
-        return ok(researchAreasList.render(form(Student.class).fill(Student.findById(id))));
+    public static Result researchAreas(Long id, String title) {
+        return ok(research_areas.render(title, form(Student.class).fill(Student.findById(id)), ResearchArea.findAllNames()));
     }
     
-    public static Result deleteResearchAreas(Long id, String researchAreaId) {
-        
-        Student.deleteResearchArea(id, Long.parseLong(researchAreaId));
-        return ok(researchAreasList.render(form(Student.class).fill(Student.findById(id))));
+    public static Result deleteResearchAreas(Long id, String title, Long researchAreaId) {
+        Student.deleteResearchArea(id, researchAreaId);
+        return redirect(routes.PeopleMgmtController.researchAreas(id, title));
+    }
+    
+    public static Result addResearchAreas(Long id, String title) {
+        String researchAreaName = form(ResearchArea.class).bindFromRequest().field("name").value();
+        Student.saveResearchArea(id, researchAreaName);
+        return redirect(routes.PeopleMgmtController.researchAreas(id, title));
     }
 }
