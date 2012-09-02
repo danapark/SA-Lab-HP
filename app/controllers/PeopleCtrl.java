@@ -8,7 +8,7 @@ import play.mvc.Result;
 
 import views.html.people.*;
 
-public class PeopleController extends Controller {
+public class PeopleCtrl extends Controller {
     private static int current_year = Calendar.getInstance().get(Calendar.YEAR);
     
     public static Result professor() {

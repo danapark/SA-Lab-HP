@@ -5,20 +5,20 @@
 
 <ul class="nav nav-pills pull-right">
   <li class="@isActive("Kang, Sungwon")">
-    <a href="@routes.PeopleController.professor()">Professor</a>
+    <a href="@routes.PeopleCtrl.professor()">Professor</a>
   </li>
   <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Students<b class="caret"></b></a>
     <ul class="dropdown-menu">
-      <a href="@routes.PeopleController.phds()">Ph.D</a>
-      <a href="@routes.PeopleController.masters()">Master</a>
+      <a href="@routes.PeopleCtrl.phds()">Ph.D</a>
+      <a href="@routes.PeopleCtrl.masters()">Master</a>
     </ul>
   </li>
   <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Alumni<b class="caret"></b></a>
     <ul class="dropdown-menu">
       @for(i <- 2005 to current_year) {
-        <a href="@routes.PeopleController.alumni(i)">@i</a>
+        <a href="@routes.PeopleCtrl.alumni(i)">@i</a>
       }
     </ul>
   </li>

@@ -6,9 +6,9 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-import views.html.management.*;
+import views.html.mgmt.people.*;
 
-public class PeopleMgmtController extends Controller {
+public class PeopleMgmt extends Controller {
     
     public static Result professor() {
         return ok(professor_mgmt.render("Professor Management"));
@@ -32,9 +32,9 @@ public class PeopleMgmtController extends Controller {
             student.id = id;
             student.update();
             if(!student.isAlumni)
-                return redirect(routes.PeopleMgmtController.students());
+                return redirect(routes.PeopleMgmt.students());
             else
-                return redirect(routes.PeopleMgmtController.alumni());
+                return redirect(routes.PeopleMgmt.alumni());
         }
     }
     
@@ -48,12 +48,12 @@ public class PeopleMgmtController extends Controller {
     
     public static Result deleteResearchAreas(Long id, String title, Long researchAreaId) {
         Student.deleteResearchArea(id, researchAreaId);
-        return redirect(routes.PeopleMgmtController.researchAreas(id, title));
+        return redirect(routes.PeopleMgmt.researchAreas(id, title));
     }
     
     public static Result addResearchAreas(Long id, String title) {
         String researchAreaName = form(ResearchArea.class).bindFromRequest().field("name").value();
         Student.saveResearchArea(id, researchAreaName);
-        return redirect(routes.PeopleMgmtController.researchAreas(id, title));
+        return redirect(routes.PeopleMgmt.researchAreas(id, title));
     }
 }

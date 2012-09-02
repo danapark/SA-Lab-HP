@@ -2,7 +2,7 @@
 
 @people_mgmt(title){
   <div class="well">
-    <form action="@routes.PeopleMgmtController.saveStudentDetail(student("id").value.toLong)" class="form-horizontal" method="post" id="saveBasicInfo">
+    <form action="@routes.PeopleMgmt.saveStudentDetail(student("id").value.toLong)" class="form-horizontal" method="post" id="saveBasicInfo">
       <fieldset>
         <legend><strong>Basic Information</strong></legend>
         <br>
@@ -86,7 +86,7 @@
           
           <div class="control-group">
             <label class="control-label">Research Areas
-              [<a href="@routes.PeopleMgmtController.researchAreas(student("id").value.toLong, title: String)"><font color="red">modify</font></a>]
+              [<a href="@routes.PeopleMgmt.researchAreas(student("id").value.toLong, title: String)"><font color="red">modify</font></a>]
             </label>
             <div class="controls">
               @for(researchArea <- student("researchAreas").indexes) {
