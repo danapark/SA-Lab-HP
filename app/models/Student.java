@@ -12,6 +12,7 @@ import javax.persistence.ManyToMany;
 import com.avaje.ebean.Ebean;
 
 import play.data.format.Formats;
+import play.data.validation.Constraints.Email;
 import play.db.ebean.Model;
 import utils.Constants;
 
@@ -28,6 +29,8 @@ public class Student extends Model {
     public String name_en;
     public String family_name_ko;
     public String name_ko;
+    
+    @Email
     public String email;
     public String degree;
     public boolean isAlumni;
