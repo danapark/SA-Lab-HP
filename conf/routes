@@ -23,3 +23,6 @@ POST    /mgmt/people/student/:id/researchAreasList/add      controllers.PeopleMg
 GET     /mgmt/people/student/:id/researchAreasList/delete   controllers.PeopleMgmt.deleteResearchAreas(id: Long, title: String, researchAreaId: Long) 
 GET     /mgmt/people/student/:id                            controllers.PeopleMgmt.studentDetail(id: Long, title: String)
 POST    /mgmt/people/student/:id                            controllers.PeopleMgmt.saveStudentDetail(id: Long)
+
+# Course
+GET     /course                                             controllers.CourseCtrl.course()
