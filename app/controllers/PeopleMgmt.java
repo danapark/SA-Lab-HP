@@ -11,7 +11,7 @@ import views.html.mgmt.people.*;
 public class PeopleMgmt extends Controller {
     
     public static Result professor() {
-        return ok(professor_mgmt.render("Professor Management"));
+        return ok(professor_details.render("Professor Management"));
     }
     
     public static Result students() {
@@ -19,14 +19,14 @@ public class PeopleMgmt extends Controller {
     }
     
     public static Result studentDetail(Long id, String title) {
-        return ok(student_mgmt.render(title, form(Student.class).fill(Student.findById(id))));
+        return ok(student_details.render(title, form(Student.class).fill(Student.findById(id))));
     }
     
     public static Result saveStudentDetail(Long id) {
         Form<Student> studentForm = form(Student.class).bindFromRequest();
         
         if(studentForm.hasErrors())
-            return badRequest(student_mgmt.render("Students Management", studentForm));
+            return badRequest(student_details.render("Students Management", studentForm));
         else {
             Student student = studentForm.get();
             student.id = id;
@@ -43,7 +43,7 @@ public class PeopleMgmt extends Controller {
     }
     
     public static Result researchAreas(Long id, String title) {
-        return ok(research_areas.render(title, form(Student.class).fill(Student.findById(id)), ResearchArea.findAllNames()));
+        return ok(researchAreas_list.render(title, form(Student.class).fill(Student.findById(id)), ResearchArea.findAllNames()));
     }
     
     public static Result deleteResearchAreas(Long id, String title, Long researchAreaId) {

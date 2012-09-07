@@ -1,6 +1,8 @@
 @(title: String)(content: Html)
 
-@views.html.mgmt.site_mgmt(title){
+@import views.html.mgmt._
+
+@mgmt_layout(title){
   <div class="row-fluid">
     @people_mgmt_menu(title)
   </div>

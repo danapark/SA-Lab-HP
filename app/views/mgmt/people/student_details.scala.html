@@ -1,6 +1,6 @@
 @(title: String, student: Form[Student])
 
-@people_mgmt(title){
+@people_mgmt_layout(title){
   <div class="well">
     <form action="@routes.PeopleMgmt.saveStudentDetail(student("id").value.toLong)" class="form-horizontal" method="post" id="saveBasicInfo">
       <fieldset>

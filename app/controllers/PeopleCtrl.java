@@ -16,14 +16,14 @@ public class PeopleCtrl extends Controller {
     }
     
     public static Result masters() {
-        return ok(students.render("Master students", current_year, Student.allMaster()));
+        return ok(students_list.render("Master students", current_year, Student.allMaster()));
     }
     
     public static Result phds() {
-        return ok(students.render("Ph.D students", current_year, Student.allPhD()));
+        return ok(students_list.render("Ph.D students", current_year, Student.allPhD()));
     }
     
     public static Result alumni(int year) {
-        return ok(students.render("Alumni at " + year, current_year, Student.allAlumniByYear(year)));
+        return ok(students_list.render("Alumni at " + year, current_year, Student.allAlumniByYear(year)));
     }
 }
