@@ -1,4 +1,9 @@
-@(title: String)
+@(title: String, courses: List[Course])
 
 @course_layout(title) {
+  @for(course <- courses) {
+    <div class="well">
+        @course_details(course)
+    </div>
+  }
 }

@@ -1,9 +1,12 @@
 package models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import play.db.ebean.Model;
+import utils.Constants;
 
 @Entity
 public class Course extends Model{
@@ -14,6 +17,7 @@ public class Course extends Model{
     @Id
     public Long   id;
     
+    public String   name;
     public String   courseId;
     public String   semester;
     public int      year;
@@ -25,5 +29,9 @@ public class Course extends Model{
     public static Long create(Course Course) {
         Course.save();
         return Course.id;
+    }
+    public static List<Course> allCourses() {
+        return find
+                .all();
     }
 }

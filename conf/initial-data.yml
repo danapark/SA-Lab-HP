@@ -130,3 +130,24 @@ researchAreas:
         name:               Software Mining
     - !!models.ResearchArea
         name:               Variability Representation
+        
+# Course
+courses:
+    - !!models.Course
+        name:               소프트웨어 모델링
+        courseId:           AS100
+        semester:           가을학기
+        year:               2012
+        overview:           모델링에 관해...
+        introduction:       이것이 무엇인고
+        classroom:          A반
+        url:                www.bloblo.com
+    - !!models.Course
+        name:               무선이동인터넷
+        courseId:             SE999
+        semester:           봄학기
+        year:               2012
+        overview:           듣지마세요.
+        introduction:       A받고 싶은 과목이었는데....T-T
+        classroom:          옥상
+        url:                www.aaa.com

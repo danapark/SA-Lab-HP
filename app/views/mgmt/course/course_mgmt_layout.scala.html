@@ -1,0 +1,12 @@
+@(title: String)(content: Html)
+
+@import views.html.mgmt._
+
+@mgmt_layout(title){
+  <div class="row-fluid">
+    <!--  course_mgmt_menu(title) 여기에 Course에 대한 상단 메뉴를 추가한다. -->
+  </div>
+  <div clas="row-fluid">
+    @content
+  </div>
+}

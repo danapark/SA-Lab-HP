@@ -1,6 +1,24 @@
-@(title: String)
+@(title: String, courses: List[Course])
 
-@course_layout(title) {
-  <div>
-  </div>
+@course_mgmt_layout(title){
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Course Name</th>
+        <th>Course ID</th>
+        <th>URL</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(course <- courses){
+        <tr>
+          <td>@course.name</td>
+          <td>@course.courseId</td>
+          <td><a href=http://@course.url>@course.url</a></td>
+          <td><a href="#" class="btn">Edit</a></td>
+        </tr>
+      }
+    </tbody>
+  </table>
 }
