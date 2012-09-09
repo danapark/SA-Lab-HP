@@ -1,7 +1,5 @@
 package controllers;
 
-import java.util.Calendar;
-
 import models.Course;
 import play.mvc.Controller;
 import play.mvc.Result;

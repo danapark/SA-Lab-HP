@@ -28,6 +28,7 @@ public class Global extends GlobalSettings {
                 for(Object student: all.get("students")) {
                     Ebean.saveManyToManyAssociations(student, "researchAreas");
                 }
+                Ebean.save(all.get("history"));
                 
             }
         }

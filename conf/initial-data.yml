@@ -151,3 +151,45 @@ courses:
         introduction:       A받고 싶은 과목이었는데....T-T
         classroom:          옥상
         url:                www.aaa.com
+        
+# History
+history:      
+    - !!models.History
+        organization:       Office of Academic Information Services, ICU
+        position:           Dean
+        kind:               professional
+        isRepresentitive:   false
+        begin_date:         2008-03-01         
+        end_date:           2009-02-28
+    - !!models.History
+        organization:       Dept. of Computer Science, KAIST
+        position:           Associate Professor
+        kind:               professional
+        isRepresentitive:   true
+        begin_date:         2009-03-01
+    - !!models.History
+        organization:       ICU
+        position:           Associate Professor
+        kind:               professional
+        isRepresentitive:   false
+        begin_date:         2005-03-01         
+        end_date:           2009-02-28
+    - !!models.History
+        organization:       Carnegie-Mellon University
+        position:           Adjunct Faculty of MSE Program
+        kind:               professional
+        isRepresentitive:   false
+        begin_date:         2003-03-01
+    - !!models.History
+        organization:       ITU-T SG17 Rapporteur
+        position:           Associate Rapporteur
+        kind:               activity
+        isRepresentitive:   false
+        begin_date:         2001-03-01
+    - !!models.History
+        organization:       WEACR 2009 International Workshop
+        position:           Program Chair
+        kind:               activity
+        isRepresentitive:   false
+        begin_date:         2009-05-27
+        end_date:           2009-05-29  
