@@ -36,7 +36,7 @@ public class Student extends Model {
     public boolean isAlumni;
     public String company;
     
-    @Formats.DateTime(pattern = "yyyy-MM-dd")
+    @Formats.DateTime(pattern = "dd/mm/yy")
     public Date begin_date;
     
     @ManyToMany
@@ -44,6 +44,7 @@ public class Student extends Model {
     
     public Blob image;
     // TODO image 처리는 차후에...
+    
     
     public static Long create(Student student) {
         student.save();

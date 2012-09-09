@@ -79,7 +79,7 @@
           <div class="control-group">
             <label class="control-label" for="begin_date"></label>
             <div class="controls">
-              <input type="text" value="@student("begin_date").value.format("yyyy-MM-dd")" name="begin_date">
+              <input type="text" value="@student("begin_date").value.format("dd/mm/yy")" name="begin_date" id="begin_date">
               <i><font color="red">date format: YYYY-MM-DD</font></i>
             </div>
           </div>
@@ -123,6 +123,7 @@
     
     $(document).ready(function(){
       check_alumni();
+      $('#begin_date').datepicker();
       $('input:radio[id=isAlumni]').change(function(){check_alumni();});
     })
   </script>
