@@ -1,5 +1,6 @@
 package controllers;
 
+import models.History;
 import models.ResearchArea;
 import models.Student;
 import play.data.Form;
@@ -11,7 +12,19 @@ import views.html.mgmt.people.*;
 public class PeopleMgmt extends Controller {
     
     public static Result professor() {
-        return ok(professor_details.render("Professor Management"));
+        return ok(professor_details.render("Professor Management", History.allProfessional(), History.allActivities()));
+    }
+    
+    public static Result saveHistory(Long historyId) {
+        return TODO;
+    }
+    
+    public static Result newHistory() {
+        return TODO;
+    }
+    
+    public static Result deleteHistory(Long historyId) {
+        return TODO;
     }
     
     public static Result students() {

@@ -35,7 +35,7 @@ public class Student extends Model {
     public boolean isAlumni;
     public String company;
     
-    @Formats.DateTime(pattern = "dd/MM/yy")
+    @Formats.DateTime(pattern = "MM/dd/yyyy")
     public Date begin_date;
     
     @ManyToMany

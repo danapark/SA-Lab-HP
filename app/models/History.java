@@ -25,10 +25,10 @@ public class History extends Model {
     public String kind;
     public boolean isRepresentitive;
     
-    @Formats.DateTime(pattern = "dd/MM/yy")
+    @Formats.DateTime(pattern = "MM/dd/yyyy")
     public Date begin_date;
     
-    @Formats.DateTime(pattern = "dd/MM/yy")
+    @Formats.DateTime(pattern = "MM/dd/yyyy")
     public Date end_date;
     
     public static Long create(History history) {
