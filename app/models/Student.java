@@ -4,7 +4,6 @@ import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -36,7 +35,7 @@ public class Student extends Model {
     public boolean isAlumni;
     public String company;
     
-    @Formats.DateTime(pattern = "dd/mm/yy")
+    @Formats.DateTime(pattern = "MM/dd/yyyy")
     public Date begin_date;
     
     @ManyToMany

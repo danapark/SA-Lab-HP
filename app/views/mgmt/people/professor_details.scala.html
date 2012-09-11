@@ -1,5 +1,76 @@
-@(title: String)
+@(title: String, professionals: List[History], activities: List[History])
+
+@viewHistoryList(historyList: List[History]) = {
+    @for(history <- historyList) {
+      <form action="@routes.PeopleMgmt.saveHistory(history.id)" method="post" class="form-inline">
+        <input type="text" class="input-small" name="begin_date" value="@history.begin_date.format("MM/dd/yyyy")">&nbsp;~&nbsp;
+        <input type="text" class="input-small" name="end_date" @if(history.end_date != null){value="@history.end_date.format("MM/dd/yyyy")"} else {disabled}>
+        <label class="checkbox">
+          <input type="checkbox" @if(history.end_date == null){checked}>Present?
+        </label>
+        <input type="text" name="position" value="@history.position">
+        <input type="text" name="organization" value="@history.organization">
+        <input type="hidden" name="kind" value="@history.kind">
+        <button class="btn" id="save">Modify</button>
+        <a href="@routes.PeopleMgmt.deleteHistory(history.id)" class="btn btn-danger">Delete</a>
+      </form>
+    }
+}
+
+@newHistory() = {
+  <fieldset>
+    <legend></legend><br>
+    <form action="@routes.PeopleMgmt.newHistory()" method="post" class="form-inline">
+      <input type="text" class="input-small" name="begin_date">&nbsp;~&nbsp;
+      <input type="text" class="input-small" name="end_date">
+      <label class="checkbox">
+        <input type="checkbox">Present?
+      </label>
+      <input type="text" name="position">
+      <input type="text" name="organization">
+      <input type="hidden" name="kind" value="professional">
+      <button class="btn btn-primary" id="save">Save</button>
+    </form>
+  </fieldset>
+}
 
 @people_mgmt_layout(title){
-  professor management!!
+  <div class="well">
+    <fieldset>
+      <legend>Image</legend><br>
+      Image will be handled in here...
+    </fieldset>
+  </div>
+  
+  <div class="well">
+    <fieldset>
+      <legend>Professional Career</legend><br>
+      @viewHistoryList(professionals)
+    </fieldset>
+    @newHistory()
+  </div>
+  
+  <div class="well">
+    <fieldset>
+      <legend>Activities</legend><br>
+      @viewHistoryList(activities)
+    </fieldset>
+    @newHistory()
+  </div>
+  
+  <script>
+    $(document).ready(function(){
+      $('input[name="begin_date"]').datepicker();
+      $('input[name="end_date"]').datepicker();
+      $('input:checkbox').change(function(){
+        var endDate = $(this).parent().prev();
+        if($(this).is(':checked')){
+          endDate.val('');
+          endDate.attr('disabled', true);
+        } else {
+          endDate.attr('disabled', false);
+        }        
+      });
+    })
+  </script>
 }

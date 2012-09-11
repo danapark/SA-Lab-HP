@@ -1,6 +1,8 @@
 package controllers;
 
 import java.util.Calendar;
+
+import models.History;
 import models.Student;
 
 import play.mvc.Controller;
@@ -12,7 +14,7 @@ public class PeopleCtrl extends Controller {
     private static int current_year = Calendar.getInstance().get(Calendar.YEAR);
     
     public static Result professor() {
-        return ok(professor.render("Kang, Sungwon", current_year));
+        return ok(professor.render("Kang, Sungwon", current_year, History.representitive(), History.allProfessional(), History.allActivities()));
     }
     
     public static Result masters() {

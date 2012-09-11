@@ -1,5 +1,33 @@
-@(title: String, current_year: Int)
+@(title: String, current_year: Int, representitives: List[History], professionals: List[History], activities: List[History])
 
 @people_layout(title, current_year) {
+  <div>
+    Image will be posted here...
+  </div>
+  <div class="well">
+    @for(representitive <- representitives) {
+      <h4><em>@representitive.position, @representitive.organization</em></h4><br>
+    }
     
+    <dl>
+      <dt>Education</dt>
+      <dd>Ph.D. in Computer Science, Univ. of Iowa, U.S.A (1992)</dd>
+      <dd>M.S. in Computer Science, Univ. of Iowa, U.S.A (1989)</dd>
+      <dd>B.A., National Seoul Univ., Korea (1982)</dd>
+    </dl>
+    
+    <dl>
+      <dt>Professional Career</dt>
+      @for(professional <- professionals) {
+        <dd><strong>@professional.begin_date.format("yyyy.MM") ~ @if(professional.end_date == null){present} else{@professional.end_date.format("yyyy.MM")}</strong>&nbsp;&nbsp;@professional.position, @professional.organization</dd>
+      }
+    </dl>
+    
+    <dl>
+      <dt>Activities</dt>
+      @for(activity <- activities) {
+        <dd><strong>@activity.begin_date.format("yyyy.MM.dd") ~ @if(activity.end_date == null){present} else{@activity.end_date.format("yyyy.MM.dd")}</strong>&nbsp;&nbsp;@activity.position, @activity.organization</dd>
+      }
+    </dl>
+  </div>
 }
