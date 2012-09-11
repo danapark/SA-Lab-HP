@@ -6,7 +6,8 @@
       <tr>
         <th>Course Name</th>
         <th>Course ID</th>
-        <th>URL</th>
+        <th>Year</th>
+        <th>Semester</th>
         <th></th>
       </tr>
     </thead>
@@ -15,10 +16,11 @@
         <tr>
           <td>@course.name</td>
           <td>@course.courseId</td>
-          <td><a href=http://@course.url>@course.url</a></td>
-          <td><a href="#" class="btn">Edit</a></td>
+          <td>@course.year</td>
+          <td>@course.semester</td>
+          <td><a href="@routes.CourseMgmt.courseDetail(course.id, title)" class="btn">Edit</a></td>
         </tr>
       }
     </tbody>
   </table>
-}
+}<br>'

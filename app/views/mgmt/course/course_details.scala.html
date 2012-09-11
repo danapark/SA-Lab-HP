@@ -1,0 +1,89 @@
+@(title: String, course: Form[Course])
+
+@course_mgmt_layout(title){
+  <div class="well">
+    <form action="@routes.CourseMgmt.saveCourseDetail(course("id").value.toLong)" class="form-horizontal" method="post" id="saveBasicInfo">
+      <fieldset>
+        <legend><strong>Basic Information</strong></legend>
+        <br>
+        <div class="span5">
+          <div class="control-group">
+            <label class="control-label">Course name</label>
+            <div class="controls">
+              <input type="text" value="@course("name").value" name="name">
+            </div>
+          </div>
+          
+          <div class="control-group">
+            <label class="control-label">Course id</label>
+            <div class="controls">
+              <input type="text" value="@course("courseId").value" name="courseId">
+            </div>
+          </div>
+          
+          <div class="control-group">
+            <label class="control-label">Classroom</label>
+            <div class="controls">
+              <input type="text" value="@course("classroom").value" name="classroom">
+            </div>
+          </div>
+        </div>
+        
+        
+        <div  class="span5">
+          <div class="control-group">
+            <label class="control-label" for="degree">Year</label>
+            <div class="controls">
+              <input type="text" value="@course("year").value" name="year">
+            </div>
+          </div>
+          
+          <div class="control-group">
+            <label class="control-label" for="degree">Semester</label>
+            <div class="controls">
+              <select name="semester">
+                <option @if(course("semester").value.equals("Spring")){selected}>Spring</option>
+                <option @if(course("semester").value.equals("Summer")){selected}>Summer</option>
+                <option @if(course("semester").value.equals("Fall")){selected}>Fall</option>
+                <option @if(course("semester").value.equals("Winter")){selected}>Winter</option>
+              </select>
+            </div>
+          </div>  
+          
+          
+          
+         <div class="control-group">
+            <label class="control-label">Course Time</label>
+            <div class="controls">
+              <input type="text" value="@course("courseTimeFrom").value" style="width: 40px;" name="courseTimeFrom"> ~ 
+              <input type="text" value="@course("courseTimeTo").value" style="width: 40px;" name="courseTimeTo">
+            </div>
+          </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Point distribution</label>
+            <div class="controls">
+              <textarea wrap="soft" style="height: 150px; width: 614px;" name="point_distribution">@course("point_distribution").value</textarea>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Overview</label>
+            <div class="controls">
+              <textarea wrap="soft" style="height: 300px; width: 614px;" name="overview">@course("overview").value</textarea>
+            </div>
+          </div>
+          <div class="control-group" align='center'>
+            <label><b>Introduction</b>
+                [<a href="#"><font color="red">Introduction.pdf</font></a>]
+            </label>
+            
+          </div>
+        <div align="center">
+          <button class="btn btn-primary btn-block" id="save" style="width:600px" align="center">Save</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  
+  
+}

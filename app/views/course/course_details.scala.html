@@ -4,12 +4,8 @@
 
     </div>
     <div class="span9">
-      <h3>@course.name (@course.courseId)</h3>
-      <b>@course.semester</b>      
-      <h4>@course.overview</h4>
-      <h4>@course.introduction</h4>
-      <ul>
-        <li>Gong Sa Jung ...</li>
-      </ul>
+      <a href="@routes.CourseCtrl.courseIntro(course.id)"><font size='6'>@course.courseId @course.name</font></a><font size='5'><b> - @course.year. @course.semester</b></font><br><br>
+      <h4>Overview:</h4>     
+      @course.overview
     </div>
 </div>
