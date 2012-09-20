@@ -1,0 +1,23 @@
+@(course : Course)
+
+@course_layout(course.name) {
+    <div class="well">
+        <div class="row-fluid">
+            <div class="span3">
+            </div>
+            <div class="span9">
+                <h4>Classroom:</h4>
+                @course.classroom
+                <h4>Class Time:</h4>
+                @course.courseTimeFrom ~ @course.courseTimeTo 
+                <h4>Point distribution:</h4>
+                @course.point_distribution
+            </div>
+        </div>
+    </div>
+<!--     <script>
+    $(document).ready(function(){
+        $('#point').append("@course.point_distribution");
+    })
+   </script> -->
+ }

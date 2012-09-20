@@ -2,11 +2,11 @@ package models;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import play.db.ebean.Model;
-import utils.Constants;
 
 @Entity
 public class Course extends Model{
@@ -21,17 +21,32 @@ public class Course extends Model{
     public String   courseId;
     public String   semester;
     public int      year;
+    
+    @Column(columnDefinition = "TEXT")
     public String   overview;
+    
+    @Column(columnDefinition = "TEXT")
     public String   introduction;
+    
+    public String   introduction_url;
     public String   classroom;
-    public String   url;
+    public String   point_distribution;
+    public String   courseTimeFrom;
+    public String   courseTimeTo;
     
     public static Long create(Course Course) {
         Course.save();
         return Course.id;
     }
-    public static List<Course> allCourses() {
+    public static List<Course> allCoursesDesc() {
         return find
-                .all();
+                .orderBy("year desc")
+                .findList();
+    }
+    public static Course findById(Long id) {
+        return find
+                .where()
+                    .eq("id", id)
+                .findUnique();
     }
 }

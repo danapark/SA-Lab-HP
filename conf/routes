@@ -29,6 +29,9 @@ POST    /mgmt/people/student/:id                            controllers.PeopleMg
 
 # Management.Course
 GET     /mgmt/course                                        controllers.CourseMgmt.course()
+GET     /mgmt/people/course/:id                             controllers.CourseMgmt.courseDetail(id: Long, title: String)
+POST    /mgmt/people/course/:id                             controllers.CourseMgmt.saveCourseDetail(id: Long)
 
 # Course
 GET     /course                                             controllers.CourseCtrl.course()
+GET     /course/:id/intro                                   controllers.CourseCtrl.courseIntro(id: Long)
