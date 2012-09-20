@@ -6,7 +6,7 @@
         <input type="text" class="input-small" name="begin_date" value="@history.begin_date.format("MM/dd/yyyy")">&nbsp;~&nbsp;
         <input type="text" class="input-small" name="end_date" @if(history.end_date != null){value="@history.end_date.format("MM/dd/yyyy")"} else {disabled}>
         <label class="checkbox">
-          <input type="checkbox" @if(history.end_date == null){checked}>Present?
+          <input type="checkbox" name="isPresent" @if(history.end_date == null){checked}>Present?
         </label>
         <input type="text" name="position" value="@history.position">
         <input type="text" name="organization" value="@history.organization">
@@ -17,18 +17,18 @@
     }
 }
 
-@newHistory() = {
+@newHistory(kind: String) = {
   <fieldset>
     <legend></legend><br>
     <form action="@routes.PeopleMgmt.newHistory()" method="post" class="form-inline">
       <input type="text" class="input-small" name="begin_date">&nbsp;~&nbsp;
       <input type="text" class="input-small" name="end_date">
       <label class="checkbox">
-        <input type="checkbox">Present?
+        <input type="checkbox" name="isPresent">Present?
       </label>
       <input type="text" name="position">
       <input type="text" name="organization">
-      <input type="hidden" name="kind" value="professional">
+      <input type="hidden" name="kind" value="@kind">
       <button class="btn btn-primary" id="save">Save</button>
     </form>
   </fieldset>
@@ -47,7 +47,7 @@
       <legend>Professional Career</legend><br>
       @viewHistoryList(professionals)
     </fieldset>
-    @newHistory()
+    @newHistory("professional")
   </div>
   
   <div class="well">
@@ -55,7 +55,7 @@
       <legend>Activities</legend><br>
       @viewHistoryList(activities)
     </fieldset>
-    @newHistory()
+    @newHistory("activity")
   </div>
   
   <script>

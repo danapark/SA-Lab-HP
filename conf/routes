@@ -16,9 +16,9 @@ GET     /people/alumni/:year                                controllers.PeopleCt
 
 # Management.People
 GET     /mgmt/people/professor                              controllers.PeopleMgmt.professor()
-POST    /mgmt/people/professor/:id                          controllers.PeopleMgmt.saveHistory(id: Long)
 POST    /mgmt/people/professor/new                          controllers.PeopleMgmt.newHistory()
-POST    /mgmt/people/professor/delete/:id                   controllers.PeopleMgmt.deleteHistory(id: Long)
+POST    /mgmt/people/professor/:id                          controllers.PeopleMgmt.saveHistory(id: Long)
+GET     /mgmt/people/professor/delete/:id                   controllers.PeopleMgmt.deleteHistory(id: Long)
 GET     /mgmt/people/students                               controllers.PeopleMgmt.students()
 GET     /mgmt/people/alumni                                 controllers.PeopleMgmt.alumni()
 GET     /mgmt/people/student/:id/researchAreasList          controllers.PeopleMgmt.researchAreas(id: Long, title: String)

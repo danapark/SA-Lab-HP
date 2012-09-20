@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.Map;
+
 import models.History;
 import models.ResearchArea;
 import models.Student;
@@ -16,15 +18,35 @@ public class PeopleMgmt extends Controller {
     }
     
     public static Result saveHistory(Long historyId) {
-        return TODO;
+        Form<History> historyForm = form(History.class).bindFromRequest();
+        boolean isValidated = validation(historyForm);
+        
+        if(isValidated){
+            History history = historyForm.get();
+            history.id = historyId;
+            history.update();
+        }
+        
+        return redirect(routes.PeopleMgmt.professor());
     }
     
     public static Result newHistory() {
-        return TODO;
+        Form<History> historyForm = form(History.class).bindFromRequest();
+        boolean isValidated = validation(historyForm);       
+        
+        if(isValidated)
+            History.create(historyForm.get());
+        
+        return redirect(routes.PeopleMgmt.professor());
     }
     
     public static Result deleteHistory(Long historyId) {
-        return TODO;
+        History history = History.findById(historyId);
+        if(history.isRepresentitive)
+            flash("error", "This career is a representitive career, so you cannot delete it.");
+        else
+            history.delete();
+        return redirect(routes.PeopleMgmt.professor());
     }
     
     public static Result students() {
@@ -68,5 +90,29 @@ public class PeopleMgmt extends Controller {
         String researchAreaName = form(ResearchArea.class).bindFromRequest().field("name").value();
         Student.saveResearchArea(id, researchAreaName);
         return redirect(routes.PeopleMgmt.researchAreas(id, title));
+    }
+    
+    public static boolean validation(Form<History> historyForm) {
+        Map<String, String> historyValues = historyForm.data();
+        
+        if(historyValues.get("organization").equals("")) {
+            flash("error", "Organization is empty!");
+            historyForm.reject("organization");
+        }
+        
+        if(historyValues.get("position").equals("")) {
+            flash("error", "Position is empty!");
+            historyForm.reject("position");
+        }
+        
+        if(historyValues.get("begin_date").equals("")) {
+            flash("error", "Begin date is empty!");
+            historyForm.reject("begin_date");
+        }
+        
+        if(historyForm.hasErrors())
+            return false;
+        else
+            return true;
     }
 }
