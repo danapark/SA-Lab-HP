@@ -1,10 +1,10 @@
 @(student: Student)
 
-<div class="row-fluid">
-    <div class="span3">
+<div class="row">
+    <div class="span2">
       Image will be posted here.
     </div>
-    <div class="span9">
+    <div class="span7">
       <h3>@student.family_name_en, @student.name_en (@student.family_name_ko @student.name_ko)</h3>
       @if(student.isAlumni) {
         <b>Employee at @student.company</b><br>

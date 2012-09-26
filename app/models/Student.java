@@ -41,7 +41,7 @@ public class Student extends Model {
     @ManyToMany
     public List<ResearchArea> researchAreas;
     
-    public Blob image;
+    public String imageFilePath;
     // TODO image 처리는 차후에...
     
     

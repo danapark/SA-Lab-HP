@@ -1,13 +1,21 @@
 @(title: String, current_year: Int, representitives: List[History], professionals: List[History], activities: List[History])
 
 @people_layout(title, current_year) {
-  <div>
-    Image will be posted here...
-  </div>
   <div class="well">
-    @for(representitive <- representitives) {
-      <h4><em>@representitive.position, @representitive.organization</em></h4><br>
-    }
+    <div class="row">
+      <div class="span2">
+        <img src="@routes.Assets.at("images/people/Professor_img.jpeg")" width="160" class="img-rounded">
+      </div>
+      <div class="span7">
+        @for(representitive <- representitives) {
+          <h4><em>@representitive.position, @representitive.organization</em></h4>
+        }
+        <i class="icon-envelope"></i>sungwon.kang[AT]kaist.ac.kr<br>
+        <i class="icon-book"></i>+82-42-350-7712
+      </div>
+    </div>
+    
+    
     
     <dl>
       <dt>Education</dt>
