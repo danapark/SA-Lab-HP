@@ -126,6 +126,7 @@ public class PeopleMgmt extends Controller {
         MultipartFormData body = request().body().asMultipartFormData();
         FilePart filePart = body.getFile("imageFile");
         if(filePart != null) {
+            Student student = Student.findById(studentId);
             String type = filePart.getFilename();
             type = type.substring(type.lastIndexOf("."));
             
@@ -135,19 +136,21 @@ public class PeopleMgmt extends Controller {
             }
             
             String fileName = Constants.DEFAULT_PEOPLE_IMAGE_PATH + "student" + studentId;
-             
+            
+            student.imageFilePath = fileName + type;
+            student.update();
+            
             File file;
             for(int i = 0; i < Constants.SUPPORT_IMAGE_TYPE.length; i++) {
-                String tempFileName = fileName + "." + Constants.SUPPORT_IMAGE_TYPE[i];
+                String tempFileName = "public/" + fileName + "." + Constants.SUPPORT_IMAGE_TYPE[i];
                 file = new File(tempFileName);
                 if(file.exists()) {
                     file.delete();
                     break;
                 }                    
             }
-            
-            filePart.getFile().renameTo(new File(fileName + type));
-            
+            filePart.getFile().renameTo(new File("public/" + fileName + type));
+               
         }
         
         return redirect(routes.PeopleMgmt.studentDetail(studentId, "Students Management"));

@@ -2,7 +2,11 @@
 
 <div class="row">
     <div class="span2">
-      Image will be posted here.
+      @if(student.imageFilePath != null) {
+        <img src="@routes.Assets.at(student.imageFilePath)" width="160" class="img-rounded">
+      } else {
+        No image yet
+      }      
     </div>
     <div class="span7">
       <h3>@student.family_name_en, @student.name_en (@student.family_name_ko @student.name_ko)</h3>
